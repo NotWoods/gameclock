@@ -10,7 +10,7 @@ const insightsModule = import('../web_modules/insights-js.js').then(
 );
 
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('/sw.js');
+  navigator.serviceWorker.register('../sw.js');
 }
 
 const MILLISECONDS_PER_SECOND = 1000;
