@@ -88,7 +88,7 @@ body {
   color: #fff;
   background: linear-gradient(135deg, #eba249, #e38528);
 }
-.clock[datetime="PT0M0S"] {
+.clock[datetime='PT0M0S'] {
   color: #fff;
   background: linear-gradient(135deg, #ae2c33, #ec3339);
 }
