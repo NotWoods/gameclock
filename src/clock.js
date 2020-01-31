@@ -79,7 +79,7 @@ function pauseClock(clock, now) {
   clock.lastPaused = now;
 }
 function pauseAll(now = Date.now()) {
-  active = undefined;
+  activeIndex = -1;
   pause.hidden = true;
   clocks.forEach(clock => pauseClock(clock, now));
 }
