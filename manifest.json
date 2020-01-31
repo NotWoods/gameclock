@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/web-manifest.json",
   "name": "GameClock",
   "start_url": ".",
   "display": "fullscreen",
@@ -20,7 +21,7 @@
     },
     {
       "src": "icons/app-32.png",
-      "sizes": "1024x1024 any",
+      "sizes": "32x32",
       "type": "image/png",
       "purpose": "any maskable"
     }
