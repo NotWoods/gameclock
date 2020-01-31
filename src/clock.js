@@ -1,6 +1,16 @@
 // @ts-check
 /** @typedef {ReturnType<typeof initClock>} Clock */
 
+const insightsModule = import('/web_modules/insights-js.js').then(insights => {
+  insights.init('fWF3tu0I8FSImuhJ');
+  insights.trackPages();
+  return insights;
+});
+
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('/sw.js');
+}
+
 const MILLISECONDS_PER_SECOND = 1000;
 const SECONDS_PER_MIN = 60;
 const STARTING_SECONDS = 60;
@@ -30,10 +40,10 @@ function initClock(className) {
     active: false,
     // Milliseconds that elapsed before pausing
     elapsedSoFar: 0,
-    // Exact time that the clock was paused last, or started.
+    // Exact time that the clock was paused last, or started. -1 means reset.
     lastPaused: -1,
     // Last value (in seconds) that was rendered
-    lastDisplayed: STARTING_SECONDS
+    lastDisplayed: STARTING_SECONDS,
   };
 }
 
@@ -46,7 +56,7 @@ function getDuration(clock, now) {
   if (!clock.active) {
     return clock.elapsedSoFar;
   } else if (clock.lastPaused !== -1) {
-    return (now - clock.lastPaused) + clock.elapsedSoFar;
+    return now - clock.lastPaused + clock.elapsedSoFar;
   } else {
     return 0;
   }
@@ -86,6 +96,10 @@ function switchActive(clock, now = Date.now()) {
   if (!active) {
     newActive = clock;
     pause.hidden = false;
+    if (clock.lastPaused === -1) {
+      // Track when a timer is started after reset (or first time)
+      insightsModule.then(({ track }) => track({ id: 'start-timer' }));
+    }
   } else {
     for (const clock of clocks) {
       if (active !== clock) {
@@ -106,7 +120,7 @@ function switchActive(clock, now = Date.now()) {
   newActive.lastPaused = now;
 }
 clocks.forEach(clock =>
-  clock.button.addEventListener('click', () => switchActive(clock))
+  clock.button.addEventListener('click', () => switchActive(clock)),
 );
 
 pause.addEventListener('click', () => pauseAll());
