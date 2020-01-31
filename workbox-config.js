@@ -1,5 +1,5 @@
 module.exports = {
-  cacheId: 'maskable.app',
+  cacheId: 'gameclock',
   globDirectory: '.',
   globPatterns: [
     'index.html',
