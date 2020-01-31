@@ -73,13 +73,11 @@ function pauseClock(clock, now) {
   // Remove class from previously active clock
   clock.display.classList.remove('clock--active');
 
-  console.log(clock);
   if (clock.lastPaused !== -1) {
     clock.elapsedSoFar = getDuration(clock, now);
   }
   clock.active = false;
   clock.lastPaused = now;
-  console.log(clock);
 }
 function pauseAll(now = Date.now()) {
   active = undefined;
@@ -128,10 +126,12 @@ clocks.forEach(clock =>
 pause.addEventListener('click', () => pauseAll());
 reset.addEventListener('click', () => {
   pauseAll();
-  clocks.forEach(clock => {
-    clock.elapsedSoFar = 0;
-    clock.lastPaused = -1;
-  });
+  if (window.confirm('Are you sure you want to reset the timers?')) {
+    clocks.forEach(clock => {
+      clock.elapsedSoFar = 0;
+      clock.lastPaused = -1;
+    });
+  }
 });
 
 /**
