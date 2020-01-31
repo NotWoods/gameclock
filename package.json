@@ -2,12 +2,14 @@
   "name": "game-clock",
   "private": true,
   "scripts": {
-    "format": "prettier \"src/clock.js\" \"style/**/*.css\" \"*.{html,md,json}\" \"{workbox-,rollup.}config.js\" --write",
-    "build": "npm run prepare -- --optimize && npm run bundle && npm run minify:css && npm run sw && npm run gzip",
+    "lint": "prettier \"src/clock.js\" \"lib/**/*.js\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.}config.js\"",
+    "format": "npm run lint -- --write",
+    "ci:build": "npm run prepare -- --optimize && npm run ci:bundle && npm run ci:minify:css && npm run sw && npm run gzip",
+    "ci:lint": "npm run lint -- --check",
     "prepare": "snowpack",
     "sw": "workbox generateSW workbox-config.js",
-    "bundle": "rollup -c",
-    "minify:css": "sqwish viewer.css -o viewer.css",
+    "ci:bundle": "rollup -c",
+    "ci:minify:css": "sqwish style/clock.css -o style/clock.css",
     "gzip": "gzip -k9nrf index.html style/clock.css manifest.json icons/app.svg src/clock.js src/clock.bundle.js sw.js"
   },
   "dependencies": {

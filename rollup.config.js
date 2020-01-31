@@ -16,6 +16,7 @@ const clockBundle = {
 const clockMin = {
   input: 'src/clock.js',
   inlineDynamicImports: false,
+  external: ['../web_modules/insights-js.js'],
   output: {
     file: 'src/clock.js',
     format: 'esm',

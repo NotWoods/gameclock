@@ -1,11 +1,13 @@
 // @ts-check
 /** @typedef {ReturnType<typeof initClock>} Clock */
 
-const insightsModule = import('/web_modules/insights-js.js').then(insights => {
-  insights.init('fWF3tu0I8FSImuhJ');
-  insights.trackPages();
-  return insights;
-});
+const insightsModule = import('../web_modules/insights-js.js').then(
+  insights => {
+    insights.init('fWF3tu0I8FSImuhJ');
+    insights.trackPages();
+    return insights;
+  },
+);
 
 if (navigator.serviceWorker) {
   navigator.serviceWorker.register('/sw.js');
