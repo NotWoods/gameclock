@@ -1,0 +1,39 @@
+{
+  "name": "game-clock",
+  "private": true,
+  "scripts": {
+    "lint": "prettier \"src/clock.js\" \"lib/**/*.js\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.}config.js\"",
+    "format": "npm run lint -- --write",
+    "ci:build": "npm run prepare -- --optimize && npm run ci:bundle && npm run ci:minify:css && npm run sw && npm run gzip",
+    "ci:lint": "npm run lint -- --check",
+    "prepare": "snowpack",
+    "sw": "workbox generateSW workbox-config.js",
+    "ci:bundle": "rollup -c",
+    "ci:minify:css": "sqwish style/clock.css -o style/clock.css",
+    "gzip": "gzip -k9nrf index.html style/clock.css manifest.json icons/app.svg src/clock.js src/clock.bundle.js sw.js"
+  },
+  "dependencies": {
+    "insights-js": "^1.2.9"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1",
+    "rollup": "^1.27.5",
+    "rollup-plugin-terser": "^5.2.0",
+    "snowpack": "^1.1.2",
+    "sqwish": "^0.2.2",
+    "workbox-cli": "^5.0.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "proseWrap": "always",
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "printWidth": 120
+        }
+      }
+    ]
+  }
+}
