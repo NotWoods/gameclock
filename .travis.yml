@@ -6,6 +6,7 @@ cache: npm
 script:
   - npm run ci:lint
   - npm run ci:build
+before_deploy: mv ci.gitignore .gitignore -f
 deploy:
   provider: pages
   skip-cleanup: true
