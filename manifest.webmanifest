@@ -1,0 +1,28 @@
+{
+  "name": "GameClock",
+  "start_url": ".",
+  "display": "fullscreen",
+  "background_color": "#312e2b",
+  "theme_color": "#312e2b",
+  "description": "Time your chess games, jenga games, and other board games.",
+  "icons": [
+    {
+      "src": "icons/app.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/app-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/app-32.png",
+      "sizes": "1024x1024 any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

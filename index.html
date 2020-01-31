@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GameClock</title>
+    <link href="style/clock.css" rel="stylesheet" />
+    <script defer src="src/clock.js"></script>
+    <link rel="preconnect" href="//getinsights.io" />
+    <link rel="modulepreload" href="/web_modules/insights-js.js" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/app-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/app-512.png" />
+    <link rel="icon" type="image/svg+xml" sizes="any" href="icons/app.svg" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icons/app-512.png" />
+    <meta name="theme-color" content="#312e2b" />
+    <meta name="description" content="Time your chess games, jenga games, and other board games." />
+  </head>
+
+  <body>
+    <main class="container">
+      <button class="clock__container clock--top">
+        <time class="clock">1:00</time>
+      </button>
+
+      <nav class="buttons">
+        <button class="button button--pause" title="Pause">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#6f6862" height="24" viewBox="0 0 24 24" width="24" role="img"><title>Pause</title><path d="M8 19c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2s-2 .9-2 2v10c0 1.1.9 2 2 2zm6-12v10c0 1.1.9 2 2 2s2-.9 2-2V7c0-1.1-.9-2-2-2s-2 .9-2 2z"/></svg>
+        </button>
+        <button class="button button--reset" title="Reset">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#6f6862" height="24" viewBox="0 0 24 24" width="24" role="img"><title>Reset</title><path d="M17.65 6.35c-1.63-1.63-3.94-2.57-6.48-2.31-3.67.37-6.69 3.35-7.1 7.02C3.52 15.91 7.27 20 12 20c3.19 0 5.93-1.87 7.21-4.56.32-.67-.16-1.44-.9-1.44-.37 0-.72.2-.88.53-1.13 2.43-3.84 3.97-6.8 3.31-2.22-.49-4.01-2.3-4.48-4.52C5.31 9.44 8.26 6 12 6c1.66 0 3.14.69 4.22 1.78l-1.51 1.51c-.63.63-.19 1.71.7 1.71H19c.55 0 1-.45 1-1V6.41c0-.89-1.08-1.34-1.71-.71l-.64.65z"/></svg>
+        </button>
+      </nav>
+
+      <button class="clock__container clock--bottom">
+        <time class="clock">1:00</time>
+      </button>
+    </main>
+  </body>
+</html>

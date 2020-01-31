@@ -1,0 +1,40 @@
+{
+  "name": "game-clock",
+  "private": true,
+  "scripts": {
+    "format": "prettier \"src/**/*.js\" \"*.{html,css,md,json}\" \"{workbox-,rollup.}config.js\" --write",
+    "build": "npm run prepare -- --optimize && npm run nomodule && npm run minify:js:src && npm run minify:js:modules && npm run minify:css && npm run sw && npm run minify:js:sw && npm run gzip",
+    "prepare": "pika install",
+    "sw": "workbox generateSW workbox-config.js",
+    "nomodule": "rollup -c",
+    "minify:css": "sqwish viewer.css -o viewer.css",
+    "minify:js:src": "find src -iname \"*.js\" -exec terser --compress --mangle --module -o {} -- {} \\;",
+    "minify:js:modules": "find web_modules -iname \"*.js\" -exec terser --compress --mangle --module -o {} -- {} \\;",
+    "minify:js:sw": "terser --compress --mangle --module -o sw.js -- sw.js",
+    "gzip": "gzip -k9nrf index.html viewer.css manifest.json && find . -maxdepth 2 -iname \"*.svg\" -exec gzip -k9nrf {} \\; && find src -iname \"*.js\" -exec gzip -k9nrf {} \\;"
+  },
+  "dependencies": {
+    "insights-js": "^1.2.9"
+  },
+  "devDependencies": {
+    "@pika/web": "^0.6.1",
+    "prettier": "^1.19.1",
+    "rollup": "^1.27.5",
+    "sqwish": "^0.2.2",
+    "terser": "^4.6.3",
+    "workbox-cli": "^5.0.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "proseWrap": "always",
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "printWidth": 120
+        }
+      }
+    ]
+  }
+}
