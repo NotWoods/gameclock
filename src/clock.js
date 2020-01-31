@@ -4,6 +4,7 @@
 const MILLISECONDS_PER_SECOND = 1000;
 const SECONDS_PER_MIN = 60;
 const STARTING_SECONDS = 60;
+const STARTING_MILLISECONDS = STARTING_SECONDS * MILLISECONDS_PER_SECOND;
 
 /** @type {Clock | undefined} */
 let active;
@@ -42,7 +43,13 @@ function initClock(className) {
  * @param {number} now Current time in milliseconds.
  */
 function getDuration(clock, now) {
-  return (now - clock.lastPaused) + clock.elapsedSoFar;
+  if (!clock.active) {
+    return clock.elapsedSoFar;
+  } else if (clock.lastPaused !== -1) {
+    return (now - clock.lastPaused) + clock.elapsedSoFar;
+  } else {
+    return 0;
+  }
 }
 
 /**
@@ -54,9 +61,13 @@ function pauseClock(clock, now) {
   // Remove class from previously active clock
   clock.display.classList.remove('clock--active');
 
+  console.log(clock);
+  if (clock.lastPaused !== -1) {
+    clock.elapsedSoFar = getDuration(clock, now);
+  }
   clock.active = false;
-  clock.elapsedSoFar = getDuration(clock, now);
   clock.lastPaused = now;
+  console.log(clock);
 }
 function pauseAll(now = Date.now()) {
   active = undefined;
@@ -112,20 +123,16 @@ reset.addEventListener('click', () => {
  * @param {Clock} clock
  */
 function renderClockNumber(clock, now = Date.now()) {
-  let seconds;
-  if (!clock.active) {
-    const duration = clock.elapsedSoFar;
-    seconds = Math.max(0, Math.floor(duration / MILLISECONDS_PER_SECOND));
-  } else if (clock.lastPaused !== -1) {
-    const duration = getDuration(clock, now);
-    seconds = Math.max(0, Math.floor(duration / MILLISECONDS_PER_SECOND));
-  }
+  const duration = STARTING_MILLISECONDS - getDuration(clock, now);
+  const seconds = Math.max(0, Math.floor(duration / MILLISECONDS_PER_SECOND));
 
   // Don't re-render if the same second count will be displayed
   if (seconds === clock.lastDisplayed) return;
   const min = String(Math.floor(seconds / SECONDS_PER_MIN));
-  const sec = String(seconds % SECONDS_PER_MIN).padStart(2, '0');
-  clock.display.textContent = `${min}:${sec}`;
+  const sec = String(seconds % SECONDS_PER_MIN);
+  clock.display.textContent = `${min}:${sec.padStart(2, '0')}`;
+  clock.display.dateTime = `PT${min}M${sec}S`;
+  clock.lastDisplayed = seconds;
 }
 requestAnimationFrame(function renderLoop() {
   const now = Date.now();
