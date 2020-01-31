@@ -18,8 +18,7 @@ const SECONDS_PER_MIN = 60;
 const STARTING_SECONDS = 60;
 const STARTING_MILLISECONDS = STARTING_SECONDS * MILLISECONDS_PER_SECOND;
 
-/** @type {Clock | undefined} */
-let active;
+let activeIndex = -1;
 const clocks = [initClock('clock--top'), initClock('clock--bottom')];
 
 /** @type {HTMLButtonElement} */
@@ -88,39 +87,38 @@ function pauseAll(now = Date.now()) {
 /**
  * Bound click event listener for clock buttons.
  * Changes the currently active timer.
- * @param {Clock} clock
+ * @param {number} index Index of clicked clock
  */
-function switchActive(clock, now = Date.now()) {
-  /** @type {Clock} */
-  let newActive;
-  if (!active) {
-    newActive = clock;
+function switchActive(index, now = Date.now()) {
+  // Index of next clock to activate
+  let nextIndex = index + 1;
+  if (nextIndex >= clocks.length) nextIndex = 0;
+
+  if (activeIndex === -1) {
+    // If no clock is active...
     pause.hidden = false;
-    if (clock.lastPaused === -1) {
+
+    if (clocks[nextIndex].lastPaused === -1) {
       // Track when a timer is started after reset (or first time)
       insightsModule.then(({ track }) => track({ id: 'start-timer' }));
     }
+  } else if (activeIndex === nextIndex) {
+    // Clock is already activated
+    return;
   } else {
-    for (const clock of clocks) {
-      if (active !== clock) {
-        newActive = clock;
-        break;
-      }
-    }
-
-    // Pause the timer
-    pauseClock(active, now);
+    // Pause the currently active clock
+    pauseClock(clocks[activeIndex], now);
   }
 
-  newActive.display.classList.add('clock--active');
-  active = newActive;
+  clocks[nextIndex].display.classList.add('clock--active');
+  activeIndex = nextIndex;
 
   // Start the timer
-  newActive.active = true;
-  newActive.lastPaused = now;
+  clocks[nextIndex].active = true;
+  clocks[nextIndex].lastPaused = now;
 }
-clocks.forEach(clock =>
-  clock.button.addEventListener('click', () => switchActive(clock)),
+clocks.forEach((clock, index) =>
+  clock.button.addEventListener('click', () => switchActive(index)),
 );
 
 pause.addEventListener('click', () => pauseAll());
@@ -149,6 +147,11 @@ function renderClockNumber(clock, now = Date.now()) {
   clock.display.textContent = `${min}:${sec.padStart(2, '0')}`;
   clock.display.dateTime = `PT${min}M${sec}S`;
   clock.lastDisplayed = seconds;
+
+  if (seconds === 0) {
+    // If reached 0 for the first time...
+    navigator.vibrate(200);
+  }
 }
 requestAnimationFrame(function renderLoop() {
   const now = Date.now();
