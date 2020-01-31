@@ -56,6 +56,7 @@ body {
   padding: 1rem;
   border: 0;
   background: none;
+  position: relative;
 
   cursor: pointer;
   font: inherit;
@@ -66,7 +67,11 @@ body {
   align-self: stretch;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
 
   color: #000;
   background: #524e48;
