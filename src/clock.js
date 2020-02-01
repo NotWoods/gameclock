@@ -117,9 +117,10 @@ function switchActive(index, now = Date.now()) {
   clocks[nextIndex].active = true;
   clocks[nextIndex].lastPaused = now;
 }
-clocks.forEach((clock, index) =>
-  clock.button.addEventListener('click', () => switchActive(index)),
-);
+clocks.forEach((clock, index) => {
+  const event = 'onpointerdown' in clock.button ? 'pointerdown' : 'click';
+  clock.button.addEventListener(event, () => switchActive(index));
+});
 
 pause.addEventListener('click', () => pauseAll());
 reset.addEventListener('click', () => {
