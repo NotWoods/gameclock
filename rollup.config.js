@@ -1,5 +1,4 @@
 import { terser } from 'rollup-plugin-terser';
-import { absolutePath } from './lib/absolute-path.js';
 
 /** @type {import('rollup').RollupOptions} */
 const clockBundle = {
@@ -9,7 +8,7 @@ const clockBundle = {
     file: 'src/clock.bundle.js',
     format: 'iife',
   },
-  plugins: [absolutePath(), terser()],
+  plugins: [terser()],
 };
 
 /** @type {import('rollup').RollupOptions} */
