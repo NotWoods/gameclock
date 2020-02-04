@@ -8,7 +8,7 @@ const clockBundle = {
     file: 'src/clock.bundle.js',
     format: 'iife',
   },
-  plugins: [absolutePath(), terser()],
+  plugins: [terser()],
 };
 
 /** @type {import('rollup').RollupOptions} */
