@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GameClock Settings</title>
+    <link href="style/settings.css" rel="stylesheet" />
+    <script type="module" src="src/settings.js"></script>
+    <script nomodule defer src="src/settings.bundle.js"></script>
+    <link rel="preconnect" href="//getinsights.io" />
+    <link rel="modulepreload" href="src/libs.js" />
+    <link rel="modulepreload" href="web_modules/insights-js.js" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/app-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/app-512.png" />
+    <link rel="icon" type="image/svg+xml" sizes="any" href="icons/app.svg" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icons/app-512.png" />
+    <meta name="theme-color" content="#312e2b" />
+    <meta name="description" content="Time your chess games, jenga games, and other board games." />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="./" class="header__link">
+        <h1 class="header__text inner">GameClock</h1>
+      </a>
+    </header>
+
+    <form class="settings inner">
+      <p class="input__container">
+        <input class="input" id="starttime" type="number" name="start" value="60" min="1" step="1" />
+        <label class="input__label" for="starttime">Starting time (in seconds)</label>
+      </p>
+
+      <button class="reset" type="reset">Reset</button>
+    </form>
+
+    <footer class="about__container">
+      <p class="about inner">
+        Time your chess games, jenga games, and other board games. I built this web app for
+        <a href="https://www.youtube.com/watch?v=YN_F9bNuF0I">Chess Clock Jenga</a>, because I couldn't find any
+        suitable web apps. The design is based on
+        <a href="https://appsco.pe/app/gameclock">another, now unavailable, web app</a> and the
+        <a href="https://play.google.com/store/apps/details?id=com.chess.clock&hl=en">Chess Clock Android app</a>.
+      </p>
+
+      <p class="about inner">
+        Created by
+        <a class="about__link" href="https://tigeroakes.com">
+          <img class="about__self-logo" src="icons/tigeroakes.svg" alt="Tiger Oakes" height="20" width="135" />
+        </a>
+      </p>
+    </footer>
+  </body>
+</html>

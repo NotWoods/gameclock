@@ -1,21 +1,14 @@
 // @ts-check
 /** @typedef {ReturnType<typeof initClock>} Clock */
 
-const insightsModule = import('../web_modules/insights-js.js').then(
-  insights => {
-    insights.init('fWF3tu0I8FSImuhJ');
-    insights.trackPages();
-    return insights;
-  },
-);
-
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('sw.js');
-}
+const insightsModule = import('./libs.js');
 
 const MILLISECONDS_PER_SECOND = 1000;
 const SECONDS_PER_MIN = 60;
-const STARTING_SECONDS = 60;
+const SETTINGS_STARTING_SECONDS = parseInt(localStorage.getItem('start'), 10);
+const STARTING_SECONDS = Number.isNaN(SETTINGS_STARTING_SECONDS)
+  ? 60
+  : SETTINGS_STARTING_SECONDS;
 const STARTING_MILLISECONDS = STARTING_SECONDS * MILLISECONDS_PER_SECOND;
 
 let activeIndex = -1;
@@ -44,7 +37,7 @@ function initClock(className) {
     // Exact time that the clock was paused last, or started. -1 means reset.
     lastPaused: -1,
     // Last value (in seconds) that was rendered
-    lastDisplayed: STARTING_SECONDS,
+    lastDisplayed: -1,
   };
 }
 

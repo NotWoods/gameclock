@@ -9,8 +9,8 @@
     "prepare": "snowpack",
     "sw": "workbox generateSW workbox-config.js",
     "ci:bundle": "rollup -c",
-    "ci:minify:css": "sqwish style/clock.css -o style/clock.css",
-    "gzip": "gzip -k9nrf index.html style/clock.css manifest.json icons/app.svg src/clock.js src/clock.bundle.js sw.js"
+    "ci:minify:css": "sqwish style/clock.css -o style/clock.css && sqwish style/settings.css -o style/settings.css",
+    "gzip": "gzip -k9nrf index.html settings.html style/clock.css style/settings.css manifest.json icons/app.svg icons/tigeroakes.svg src/clock.js src/clock.bundle.js src/settings.js src/settings.bundle.js sw.js"
   },
   "dependencies": {
     "insights-js": "^1.2.9"
