@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"lib": ["dom"],
+		"target": "esnext",
+		"module": "esnext"
+	},
+	"include": [
+		"src/**/*.js",
+		"src/missing-types.d.ts"
+	]
+}

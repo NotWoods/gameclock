@@ -1,4 +1,5 @@
 import { terser } from 'rollup-plugin-terser';
+import urlResolve from 'rollup-plugin-url-resolve';
 
 function bundleAndMinify(scriptName) {
   /** @type {import('rollup').RollupOptions} */
@@ -9,7 +10,7 @@ function bundleAndMinify(scriptName) {
       file: `src/${scriptName}.bundle.js`,
       format: 'iife',
     },
-    plugins: [terser()],
+    plugins: [urlResolve(), terser()],
   };
 
   /** @type {import('rollup').RollupOptions} */
