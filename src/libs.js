@@ -1,5 +1,5 @@
 // @ts-check
-import { init, trackPages, track as _track } from 'https://cdn.pika.dev/insights-js@^1.2.9';
+import { init, trackPages, track } from 'https://cdn.skypack.dev/insights-js@v1.2.10';
 
 init('fWF3tu0I8FSImuhJ');
 trackPages();
@@ -8,4 +8,4 @@ if (navigator.serviceWorker) {
   navigator.serviceWorker.register('sw.js');
 }
 
-export const track = /** @type {import('insights-js').track} */ (_track);
+export { track };

@@ -2,7 +2,8 @@
 	"compilerOptions": {
 		"lib": ["dom"],
 		"target": "esnext",
-		"module": "esnext"
+		"module": "esnext",
+		"moduleResolution": "node"
 	},
 	"include": [
 		"src/**/*.js",

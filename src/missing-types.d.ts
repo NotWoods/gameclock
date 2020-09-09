@@ -1,3 +1,3 @@
-declare module 'https://cdn.pika.dev/insights-js@^1.2.9' {
+declare module 'https://cdn.skypack.dev/insights-js@v1.2.10' {
 	export * from 'insights-js';
 }
