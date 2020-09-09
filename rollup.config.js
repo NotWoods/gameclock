@@ -1,5 +1,11 @@
+// @ts-check
 import { terser } from 'rollup-plugin-terser';
+import urlResolve from 'rollup-plugin-url-resolve';
 
+/**
+ * Create two bundles: one minified and one not.
+ * @param {string} scriptName
+ */
 function bundleAndMinify(scriptName) {
   /** @type {import('rollup').RollupOptions} */
   const bundle = {
@@ -9,7 +15,7 @@ function bundleAndMinify(scriptName) {
       file: `src/${scriptName}.bundle.js`,
       format: 'iife',
     },
-    plugins: [terser()],
+    plugins: [urlResolve(), terser()],
   };
 
   /** @type {import('rollup').RollupOptions} */

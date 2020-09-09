@@ -2,11 +2,10 @@
   "name": "game-clock",
   "private": true,
   "scripts": {
-    "lint": "prettier \"src/clock.js\" \"lib/**/*.js\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.}config.js\"",
+    "lint": "prettier \"src/clock.js\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.}config.js\"",
     "format": "npm run lint -- --write",
-    "ci:build": "npm run prepare -- --optimize && npm run ci:bundle && npm run ci:minify:css && npm run sw && npm run gzip",
+    "ci:build": "npm run ci:bundle && npm run ci:minify:css && npm run sw && npm run gzip",
     "ci:lint": "npm run lint -- --check",
-    "prepare": "snowpack",
     "sw": "workbox generateSW workbox-config.js",
     "ci:bundle": "rollup -c",
     "ci:minify:css": "sqwish style/clock.css -o style/clock.css && sqwish style/settings.css -o style/settings.css",
@@ -16,12 +15,12 @@
     "insights-js": "^1.2.9"
   },
   "devDependencies": {
-    "prettier": "^1.19.1",
-    "rollup": "^1.27.5",
-    "rollup-plugin-terser": "^5.2.0",
-    "snowpack": "^1.1.2",
+    "prettier": "^2.1.1",
+    "rollup": "^2.26.11",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-url-resolve": "^0.1.1",
     "sqwish": "^0.2.2",
-    "workbox-cli": "^5.0.0"
+    "workbox-cli": "^5.1.4"
   },
   "prettier": {
     "singleQuote": true,
