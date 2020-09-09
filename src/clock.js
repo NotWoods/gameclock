@@ -74,7 +74,7 @@ function pauseClock(clock, now) {
 function pauseAll(now = Date.now()) {
   activeIndex = -1;
   pause.hidden = true;
-  clocks.forEach(clock => pauseClock(clock, now));
+  clocks.forEach((clock) => pauseClock(clock, now));
 }
 
 /**
@@ -119,7 +119,7 @@ pause.addEventListener('click', () => pauseAll());
 reset.addEventListener('click', () => {
   pauseAll();
   if (window.confirm('Are you sure you want to reset the timers?')) {
-    clocks.forEach(clock => {
+    clocks.forEach((clock) => {
       clock.elapsedSoFar = 0;
       clock.lastPaused = -1;
     });
@@ -149,6 +149,6 @@ function renderClockNumber(clock, now = Date.now()) {
 }
 requestAnimationFrame(function renderLoop() {
   const now = Date.now();
-  clocks.forEach(clock => renderClockNumber(clock, now));
+  clocks.forEach((clock) => renderClockNumber(clock, now));
   requestAnimationFrame(renderLoop);
 });

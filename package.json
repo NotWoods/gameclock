@@ -2,7 +2,7 @@
   "name": "game-clock",
   "private": true,
   "scripts": {
-    "lint": "prettier \"src/clock.js\" \"lib/**/*.js\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.}config.js\"",
+    "lint": "prettier \"src/clock.js\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.}config.js\"",
     "format": "npm run lint -- --write",
     "ci:build": "npm run ci:bundle && npm run ci:minify:css && npm run sw && npm run gzip",
     "ci:lint": "npm run lint -- --check",
