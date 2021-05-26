@@ -3,7 +3,7 @@ import {
   init,
   trackPages,
   track,
-} from 'https://cdn.skypack.dev/insights-js@v1.2.10';
+} from 'insights-js';
 
 init('fWF3tu0I8FSImuhJ');
 trackPages();

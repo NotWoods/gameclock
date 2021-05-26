@@ -15,12 +15,11 @@ jobs:
         with:
           node-version: '14'
       - run: npm ci
-      - run: npm run ci:lint
-      - run: npm run ci:build
+      - run: npm run lint
+      - run: npm run build
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: "./"
-          exclude_assets: ".github,.gitignore,node_modules"
+          publish_dir: "./dist"
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'

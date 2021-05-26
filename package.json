@@ -2,24 +2,18 @@
   "name": "game-clock",
   "private": true,
   "scripts": {
-    "lint": "prettier \"src/*.{js,ts}\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.}config.js\"",
-    "format": "npm run lint -- --write",
-    "ci:build": "npm run ci:bundle && npm run ci:minify:css && npm run sw && npm run gzip",
-    "ci:lint": "npm run lint -- --check",
-    "sw": "workbox generateSW workbox-config.js",
-    "ci:bundle": "rollup -c",
-    "ci:minify:css": "csso style/clock.css -o style/clock.css && csso style/settings.css -o style/settings.css",
-    "gzip": "gzip -k9nrf index.html settings.html style/clock.css style/settings.css manifest.json icons/app.svg icons/tigeroakes.svg src/clock.js src/clock.bundle.js src/settings.js src/settings.bundle.js sw.js"
+    "build": "vite build",
+    "postbuild": "workbox generateSW workbox-config.js",
+    "dev": "vite",
+    "lint": "prettier \"src/*.{js,ts}\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.,vite.}config.js\" --write"
   },
   "dependencies": {
     "insights-js": "^1.2.10"
   },
   "devDependencies": {
-    "csso-cli": "^3.0.0",
+    "@vitejs/plugin-legacy": "^1.4.0",
     "prettier": "~2.3.0",
-    "rollup": "^2.34.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-url-resolve": "^0.1.1",
+    "vite": "^2.3.4",
     "workbox-cli": "^6.1.5"
   },
   "prettier": {
