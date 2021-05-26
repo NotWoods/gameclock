@@ -1,1 +1,0 @@
-import("./libs.js");const t=document.querySelector('input[name="start"]');t.addEventListener("change",()=>{localStorage.setItem("start",t.value)});const e=parseInt(localStorage.getItem("start"),10);Number.isNaN(e)||(t.value=e.toString());

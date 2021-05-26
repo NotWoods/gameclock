@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <title>GameClock Settings</title>
-    <link href="style/settings.css" rel="stylesheet" />
-    <script type="module" src="src/settings.js"></script>
-    <script nomodule defer src="src/settings.bundle.js"></script>
+    
+    
     <link rel="preconnect" href="//getinsights.io" />
-    <link rel="modulepreload" href="src/libs.js" />
-    <link rel="modulepreload" href="web_modules/insights-js.js" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" sizes="32x32" href="icons/app-32.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="icons/app-512.png" />
     <link rel="icon" type="image/svg+xml" sizes="any" href="icons/app.svg" />
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="manifest.webmanifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icons/app-512.png" />
     <meta name="theme-color" content="#312e2b" />
     <meta name="description" content="Time your chess games, jenga games, and other board games." />
-  </head>
+  <script type="module" crossorigin src="/assets/settings.e000d7e1.js"></script>
+  <link rel="modulepreload" href="/assets/preload-helper.7808a9b5.js">
+  <link rel="stylesheet" href="/assets/settings.be8806e9.css">
+</head>
 
   <body>
     <header class="header">
@@ -54,5 +54,9 @@
         </a>
       </p>
     </footer>
-  </body>
+  
+<script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule src="/assets/polyfills-legacy.9d99285c.js"></script>
+  <script nomodule id="vite-legacy-entry" data-src="/assets/settings-legacy.1bec92af.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
 </html>
