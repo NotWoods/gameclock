@@ -1,4 +1,4 @@
-<img src="icons/app.svg" width="128" height="128" alt="">
+<img src="public/icons/app.svg" width="128" height="128" alt="">
 
 # GameClock
 
