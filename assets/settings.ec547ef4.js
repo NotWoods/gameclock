@@ -1,0 +1,1 @@
+import{_ as e}from"./preload-helper.ec28e78c.js";e((()=>__import__("./libs.accc2d38.js")),void 0);const t=document.querySelector('input[name="start"]');t.addEventListener("change",(()=>{localStorage.setItem("start",t.value)}));const a=parseInt(localStorage.getItem("start"),10);Number.isNaN(a)||(t.value=a.toString());
