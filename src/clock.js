@@ -1,7 +1,7 @@
 // @ts-check
 /** @typedef {ReturnType<typeof initClock>} Clock */
 
-const insightsModule = import('./libs.js');
+const libModule = import('./libs.js');
 
 const MILLISECONDS_PER_SECOND = 1000;
 const SECONDS_PER_MIN = 60;
@@ -93,7 +93,7 @@ function switchActive(index, now = Date.now()) {
 
     if (clocks[nextIndex].lastPaused === -1) {
       // Track when a timer is started after reset (or first time)
-      insightsModule.then(({ track }) => track({ id: 'start-timer' }));
+      libModule.then(({ trackGoal }) => trackGoal('7GNS1PRY', 0));
     }
   } else if (activeIndex === nextIndex) {
     // Clock is already activated
