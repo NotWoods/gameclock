@@ -5,7 +5,8 @@
     "build": "vite build",
     "postbuild": "workbox generateSW workbox-config.js",
     "dev": "vite",
-    "lint": "prettier \"src/**/*\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.,vite.}config.js\" --write"
+    "lint": "prettier \"src/**/*\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.,vite.}config.js\" --check",
+    "format": "prettier \"src/**/*\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.,vite.}config.js\" --write"
   },
   "dependencies": {
     "fathom-client": "^3.2.0"
