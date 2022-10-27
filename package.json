@@ -9,13 +9,13 @@
     "format": "prettier \"src/**/*\" \"style/**/*.css\" \"*.{html,md,json,yml}\" \"{workbox-,rollup.,vite.}config.js\" --write"
   },
   "dependencies": {
-    "fathom-client": "^3.2.0"
+    "fathom-client": "^3.5.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-legacy": "^1.6.2",
-    "prettier": "~2.4.1",
-    "vite": "^2.6.14",
-    "workbox-cli": "^6.3.0"
+    "@vitejs/plugin-legacy": "^2.3.0",
+    "prettier": "~2.7.1",
+    "vite": "^3.2.0",
+    "workbox-cli": "^6.5.4"
   },
   "prettier": {
     "singleQuote": true,
