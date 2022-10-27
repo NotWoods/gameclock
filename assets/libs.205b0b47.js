@@ -1,0 +1,1 @@
+var t=function(e){window.__fathomClientQueue=window.__fathomClientQueue||[],window.__fathomClientQueue.push(e)},i=function(e,o){window.fathom?window.fathom.trackGoal(e,o):t({type:"trackGoal",code:e,cents:o})};navigator.serviceWorker&&navigator.serviceWorker.register("sw.js");export{i as trackGoal};
