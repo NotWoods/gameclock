@@ -30,13 +30,16 @@
       </a>
     </header>
 
-    <form class="settings inner">
+    <form class="settings inner" action="./" method="get">
       <p class="input__container">
         <input class="input" id="starttime" type="number" name="start" value="60" min="1" step="1" />
         <label class="input__label" for="starttime">Starting time (in seconds)</label>
       </p>
 
-      <button class="reset" type="reset">Reset</button>
+      <div class="form-buttons">
+        <button class="reset form-button" type="reset">Reset</button>
+        <button class="submit form-button" type="submit">Submit</button>
+      </div>
     </form>
 
     <footer class="about__container">

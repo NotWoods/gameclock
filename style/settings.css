@@ -88,21 +88,40 @@ a {
   border-width: 2px;
 }
 
-.reset {
+.form-buttons {
+  text-align: right;
+}
+.form-button {
   display: inline-block;
   border: 0;
   margin-top: 1rem;
   padding: 0 1rem;
   border-radius: 0.25rem;
 
-  background: linear-gradient(135deg, #ae2c33, #ec3339);
   font: inherit;
   color: inherit;
   line-height: 2rem;
   cursor: pointer;
 }
+.submit {
+  background: linear-gradient(
+    135deg,
+    hsl(33, 80.2%, 50%),
+    hsl(33, 80.2%, 55.4%)
+  );
+}
+.submit:hover {
+  background: hsl(33, 80.2%, 55.4%);
+}
+.reset {
+  background: linear-gradient(
+    135deg,
+    hsl(356.8, 59.6%, 42.7%),
+    hsl(358.1, 83%, 56.3%)
+  );
+}
 .reset:hover {
-  background: #ec3339;
+  background: hsl(358.1, 83%, 56.3%);
 }
 
 .about {
