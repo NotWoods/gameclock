@@ -1,3 +1,5 @@
+Moved to https://github.com/NotWoods/games/tree/main/gameclock
+
 <img src="public/icons/app.svg" width="128" height="128" alt="">
 
 # GameClock
